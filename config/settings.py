@@ -74,6 +74,7 @@ CACHES = {
         "LOCATION": os.environ.get("REDIS_URL", "redis://localhost:6379/0"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "SERIALIZER": "django_redis.serializers.json.JSONSerializer",
         },
     }
 }
@@ -104,3 +105,24 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+    "loggers": {
+        "posts": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+    },
+}
