@@ -6,7 +6,7 @@ REST API для блога с кешированием постов в Redis.
 
 ## Архитектура
 
-![Architecture](images/architecture.png)
+![Architecture](docs/architecture.png)
 
 **Почему такой подход к кешированию:**
 
@@ -127,6 +127,8 @@ pytest tests/
 ```
 
 ## Примеры запросов
+
+Коллекция запросов для insomnia: `docs/insomnia.yaml`
 
 ### Создать пост
 

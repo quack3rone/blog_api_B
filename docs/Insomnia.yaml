@@ -1,0 +1,194 @@
+type: collection.insomnia.rest/5.0
+name: blog_api
+meta:
+  id: wrk_f795ae14d3af425e97c1533049f5c882
+  created: 1774139856695
+  modified: 1774139866335
+  description: ""
+collection:
+  - url: http://127.0.0.1:8000/api/posts/
+    name: Создание поста
+    meta:
+      id: req_48b03411562b497990e93beef2122f54
+      created: 1774139874080
+      modified: 1774144255345
+      isPrivate: false
+      description: ""
+      sortKey: -1774139874080
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "title": "3 пост",
+            "content": "текст"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/posts/
+    name: Список всех постов
+    meta:
+      id: req_325a16f675ea4ecaa5fa27c0090d9769
+      created: 1774140034803
+      modified: 1774179117525
+      isPrivate: false
+      description: ""
+      sortKey: -1774140034803
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/posts/2/
+    name: Получить один пост (кеш)
+    meta:
+      id: req_70f545a0728d4f40959951bff5622920
+      created: 1774140181002
+      modified: 1774144227328
+      isPrivate: false
+      description: ""
+      sortKey: -1774140181002
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/posts/4/
+    name: Обновить пост (инвалидация)
+    meta:
+      id: req_f50381aea67e478a94bee820159a2923
+      created: 1774140279697
+      modified: 1774178434204
+      isPrivate: false
+      description: ""
+      sortKey: -1774140279697
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "title": "Обновлённый заголовок",
+        		"content": "ffdfff"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/posts/2/
+    name: Удалить пост (инвалидация)
+    meta:
+      id: req_c329bca61127440087b7cb6ab08f9a56
+      created: 1774140324614
+      modified: 1774178234927
+      isPrivate: false
+      description: ""
+      sortKey: -1774140324614
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/posts/999/
+    name: Несуществующий пост
+    meta:
+      id: req_b488f3fef64640f59102aa1c38d731e2
+      created: 1774140363430
+      modified: 1774178263229
+      isPrivate: false
+      description: ""
+      sortKey: -1774140363430
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://127.0.0.1:8000/api/posts/3/
+    name: Частично обновить пост (инвалидация)
+    meta:
+      id: req_faff042c3497456b9065e41c80b9c84f
+      created: 1774178275502
+      modified: 1774178394341
+      isPrivate: false
+      description: ""
+      sortKey: -1774178275502
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "title": "Обновлённый заголовок"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_3d3d89b7900137bb67fa2e6ca5bf63e5ad5e8cb9
+    created: 1774139856698
+    modified: 1774139856698
+environments:
+  name: Base Environment
+  meta:
+    id: env_3d3d89b7900137bb67fa2e6ca5bf63e5ad5e8cb9
+    created: 1774139856697
+    modified: 1774139856697
+    isPrivate: false
