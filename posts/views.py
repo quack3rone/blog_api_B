@@ -1,6 +1,7 @@
 import logging
 
 from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -16,9 +17,12 @@ class PostListCreateView(APIView):
     def get(self, request):
         posts = Post.objects.all()
 
-        serializer = PostSerializer(posts, many=True)
+        paginator = PageNumberPagination()
+        page = paginator.paginate_queryset(posts, request)
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        serializer = PostSerializer(page, many=True)
+
+        return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
         serializer = PostSerializer(data=request.data)
@@ -62,6 +66,29 @@ class PostDetailView(APIView):
         set_post_to_cache(post_id, serializer.data)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request, post_id):
+        post = self._get_post_or_404(post_id)
+
+        if post is None:
+            return Response(
+                {"detail": "Пост не найден."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        serializer = PostSerializer(post, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            invalidate_post_cache(post_id)
+
+            logger.info("Post partially updated, id: %s, cache invalidated", post_id)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        logger.warning("Post patch failed, id: %s, errors: %s", post_id, serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, post_id):
         post = self._get_post_or_404(post_id)
