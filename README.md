@@ -83,7 +83,7 @@ docker-compose run --rm web pytest tests/
 
 ```bash
 git clone https://github.com/quack3rone/blog_api_B.git
-cd blog_api
+cd blog_api_B
 ```
 
 #### 2. Создать виртуальное окружение и установить зависимости
