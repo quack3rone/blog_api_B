@@ -6,24 +6,7 @@ REST API для блога с кешированием постов в Redis.
 
 ## Архитектура
 
-```
-Клиент
-  │
-  ▼
-Django REST Framework
-  │
-  ├── GET /api/posts/{id}/ ──► Redis (cache)
-  │                               │ miss
-  │                               ▼
-  │                           PostgreSQL
-  │                               │
-  │                               └──► Redis (set TTL 300s)
-  │
-  ├── POST /api/posts/   ──► PostgreSQL
-  ├── PUT /api/posts/{id}/  ──► PostgreSQL + инвалидация кеша
-  ├── PATCH /api/posts/{id}/ ──► PostgreSQL + инвалидация кеша
-  └── DELETE /api/posts/{id}/ ──► PostgreSQL + инвалидация кеша
-```
+![Architecture](images/architecture.png)
 
 **Почему такой подход к кешированию:**
 
