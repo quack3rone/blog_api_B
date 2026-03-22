@@ -54,7 +54,7 @@ REST API для блога с кешированием постов в Redis.
 
 ```bash
 git clone https://github.com/quack3rone/blog_api_B.git
-cd blog_api
+cd blog_api_B
 ```
 
 #### 2. Запустить
